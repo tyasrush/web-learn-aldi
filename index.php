@@ -35,27 +35,26 @@
                   <button type="submit" name="button-submit" value="login">Login</button>
                   <button type="submit" name="button-submit" value="signup">Daftar</button>
                </form>
-					<div><?php 
+					<div>
+               <?php 
                $message = '';
-               if (isset($_GET['error'])) {
-                  if ($_GET['error'] == true) {
-                     if (isset($_GET['form_null']) && $_GET['form_null'] == true) {
+
+                     if (isset($_GET['form_null']) && $_GET['form_null']) {
                         $message = "Form masih kosong";
-                     }
+                     } 
 
                      if (isset($_GET['login']) && $_GET['login'] == false) {
                         $message = "Login gagal, silahkan ulangi";
-                     }
+                     } 
 
-                     if (isset($_GET['signup']) && $_GET['signup'] == false) {
+                     if (isset($_GET['signup']) && !$_GET['signup']) {
                         $message = "Pendaftaran gagal, silahkan ulangi";
                      }
-                  } else {
-                     if (isset($_GET['signup']) && $_GET['signup'] == true) {
+
+                     if (isset($_GET['signup']) && $_GET['signup']) {
                         $message = "Pendaftaran berhasil, silahkan login";
                      }
-                  } 
-               }
+
 
                echo $message;
                ?></div>

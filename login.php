@@ -1,11 +1,9 @@
 <?
-
-// echo "testing button : " . $_POST['button-submit'];
-
 session_start();
 
 include 'koneksi.php';
 
+//fungsi login untuk cek apakah user sudah terdaftar atau belum
 function login() {
 	if (isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0) {
 		$stmt = getConnection()->prepare('
@@ -31,8 +29,9 @@ function login() {
 	}
 }
 
-
+//fungsi sign up untuk user yang ingin mendaftar
 function signup() {
+	//cek apakah username dan password sudah ada
 	if (isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0) {
 	$stmt = getConnection()->prepare('
             INSERT INTO user(username, password) VALUES 
